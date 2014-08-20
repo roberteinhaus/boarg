@@ -23,7 +23,7 @@ Prerequisites
 
 Run BoarG
 ---------
-If your system is configured to automatically execute .py files, just double-click boarg.py. Else run
+If your system is configured to automatically execute .py files, just double-click boarg.py. Otherwise run
 ```
 python boarg.py
 ```

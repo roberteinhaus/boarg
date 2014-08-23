@@ -18,27 +18,26 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 class BoarSession(object):
-	UNKNOWN=0
-	UPTODATE=1
-	MODIFIED=2
+    UNKNOWN=0
+    UPTODATE=1
+    MODIFIED=2
 
-	def __init__(self, path, session="", repo=""):
-		self.path = path
-		self.session = session
-		self.repo = repo
-		self.buffer = ''
-		self.status = self.UNKNOWN
+    def __init__(self, path, session="", repo=""):
+        self.path = path
+        self.session = session
+        self.repo = repo
+        self.buffer = ''
+        self.status = self.UNKNOWN
 
-	def boarCommit(self):
-		pass
+    def boarCommit(self):
+        pass
 
-	def boarStatus(self):
-		pass
+    def boarStatus(self):
+        pass
 
-	def boarUpdate(self):
-		pass
+    def boarUpdate(self):
+        pass
 
 
-	def __str__(self):
-		return self.path + '\n- ' + self.session + '\n- ' + self.repo
-
+    def __str__(self):
+        return self.path + '\n- ' + self.session + '\n- ' + self.repo

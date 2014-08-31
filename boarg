@@ -27,10 +27,10 @@ from PySide import QtCore, QtGui
 from boarsession import BoarSession
 from boarrunner import BoarRunner
 from mainwindow import MainWindow
+import gui_resources
 
-__version__ = "0.1.3"
-_SESSIONCONFIGFILE = "config" + os.sep + "sessions"
-
+__version__ = "0.1.4"
+_SESSIONCONFIGFILE = os.path.dirname(os.path.realpath(__file__)) + os.sep + "config" + os.sep + "sessions"
 
 class MainController(object):
     def __init__(self, parent=None):
@@ -102,11 +102,11 @@ class ControlMainWindow(QtGui.QMainWindow):
             # to right, to get the text to the left ... strange.
             item.setTextAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
             if session.status == BoarSession.MODIFIED:
-                item.setIcon(QtGui.QIcon('icons/important.png'))
+                item.setIcon(QtGui.QIcon(':/icons/modified.png'))
             elif session.status == BoarSession.UPTODATE:
-                item.setIcon(QtGui.QIcon('icons/available.png'))
+                item.setIcon(QtGui.QIcon(':/icons/uptodate.png'))
             elif session.status == BoarSession.UNKNOWN:
-                item.setIcon(QtGui.QIcon('icons/unknown.png'))
+                item.setIcon(QtGui.QIcon(':/icons/unknown.png'))
             self.ui.dirList.addItem(item)
         #self.ui.dirList.setCurrentRow(currentRow)
     
@@ -179,13 +179,13 @@ class ControlMainWindow(QtGui.QMainWindow):
         selectedSession = self.ui.dirList.currentRow()
         item = self.ui.dirList.currentItem()
         if cmd == "ci":
-            item.setIcon(QtGui.QIcon('icons/uptodate.png'))
+            item.setIcon(QtGui.QIcon(':/icons/uptodate.png'))
         elif cmd == "status":
             datastr = "".join(data)
             if "M " in datastr or "A " in datastr or "D " in datastr:
-                item.setIcon(QtGui.QIcon('icons/modified.png'))
+                item.setIcon(QtGui.QIcon(':/icons/modified.png'))
             else:
-                item.setIcon(QtGui.QIcon('icons/uptodate.png'))
+                item.setIcon(QtGui.QIcon(':/icons/uptodate.png'))
         self.loading(False)
         self.sessions[selectedSession].buffer = self.ui.textEdit.toPlainText()
     
@@ -268,7 +268,7 @@ class ControlMainWindow(QtGui.QMainWindow):
     def importSessionFinished(self, data):
         self.addFolder(self.newDir)
         item = self.ui.dirList.currentItem()
-        item.setIcon(QtGui.QIcon('icons/uptodate.png'))
+        item.setIcon(QtGui.QIcon(':/icons/uptodate.png'))
         self.loading(False)
     
     def get_data(self, data):

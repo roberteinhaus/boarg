@@ -28,6 +28,7 @@ class BoarRunner(QtCore.QThread):
     progress = QtCore.Signal(object)
     error = QtCore.Signal(object)
     exception = QtCore.Signal(object)
+
     
     def __init__(self, parent, cmd, path="", params=[]):
         QtCore.QThread.__init__(self, parent)
@@ -40,11 +41,12 @@ class BoarRunner(QtCore.QThread):
 
     def run(self):
         try:
+            _executeable = ("boar.bat" if sys.platform.startswith('win32') else "boar")
             progress = 0
             isError = False
             infostr = 'Running boar ' + self.cmd + ' on ' + self.path
             self.dataReady.emit(infostr)
-            processCmd = ["boar", self.cmd] + self.params
+            processCmd = [_executeable, self.cmd] + self.params
             if self.path != "": 
                 p = subprocess.Popen(
                     processCmd,

@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>about.png</file>
+        <file>add.png</file>
+        <file>boarg.png</file>
+        <file>commit.png</file>
+        <file>edit.png</file>
+        <file>exit.png</file>
+        <file>folder.png</file>
+        <file>help.png</file>
+        <file>loader.gif</file>
+        <file>modified.png</file>
+        <file>remove.png</file>
+        <file>status.png</file>
+        <file>unknown.png</file>
+        <file>update.png</file>
+        <file>uptodate.png</file>
+    </qresource>
+</RCC>

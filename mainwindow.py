@@ -21,12 +21,14 @@ import os
 
 from PySide import QtCore, QtGui
 
+import gui_resources
+
 class MainWindow(object):
 
     def setupUi(self, MainWindow):      
         MainWindow.setObjectName("MainWindow")
         MainWindow.setMinimumSize(1000,740)
-        MainWindow.setWindowIcon(QtGui.QIcon('icons/boarg.png'))
+        MainWindow.setWindowIcon(QtGui.QIcon(':/icons/boarg.png'))
         
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -43,11 +45,11 @@ class MainWindow(object):
         self.dirList.setMinimumWidth(400)       
 
         self.dirAddButton = QtGui.QPushButton()
-        self.dirAddButton.setIcon(QtGui.QIcon('icons/add.png'))
+        self.dirAddButton.setIcon(QtGui.QIcon(':/icons/add.png'))
         self.dirEditButton = QtGui.QPushButton()
-        self.dirEditButton.setIcon(QtGui.QIcon('icons/edit.png'))
+        self.dirEditButton.setIcon(QtGui.QIcon(':/icons/edit.png'))
         self.dirRemoveButton = QtGui.QPushButton()
-        self.dirRemoveButton.setIcon(QtGui.QIcon('icons/remove.png'))
+        self.dirRemoveButton.setIcon(QtGui.QIcon(':/icons/remove.png'))
 
         dirButtonBox.addWidget(self.dirAddButton)
         dirButtonBox.addWidget(self.dirEditButton)
@@ -92,33 +94,33 @@ class MainWindow(object):
         self.actionFolders = QtGui.QAction(MainWindow)
         self.actionFolders.setObjectName("actionFolders")
         self.actionFolders.setShortcut('Ctrl+F')
-        self.actionFolders.setIcon(QtGui.QIcon('icons/folder.png'))
+        self.actionFolders.setIcon(QtGui.QIcon(':/icons/folder.png'))
         self.actionClose = QtGui.QAction(MainWindow)
         self.actionClose.setObjectName("actionClose")
         self.actionClose.setShortcut('Ctrl+Q')
-        self.actionClose.setIcon(QtGui.QIcon('icons/exit.png'))
+        self.actionClose.setIcon(QtGui.QIcon(':/icons/exit.png'))
         self.actionHelp = QtGui.QAction(MainWindow)
         self.actionHelp.setObjectName("actionHelp")
         self.actionHelp.setShortcut('F1')
-        self.actionHelp.setIcon(QtGui.QIcon('icons/help.png'))
+        self.actionHelp.setIcon(QtGui.QIcon(':/icons/help.png'))
         self.actionAbout = QtGui.QAction(MainWindow)
         self.actionAbout.setObjectName("actionAbout")
-        self.actionAbout.setIcon(QtGui.QIcon('icons/about.png'))
+        self.actionAbout.setIcon(QtGui.QIcon(':/icons/about.png'))
 
         self.actionStatus = QtGui.QAction(MainWindow)
         self.actionStatus.setObjectName("actionStatus")
         self.actionStatus.setShortcut('F5')
-        self.actionStatus.setIcon(QtGui.QIcon('icons/status.png'))
+        self.actionStatus.setIcon(QtGui.QIcon(':/icons/status.png'))
                 
         self.actionUpdate = QtGui.QAction(MainWindow)
         self.actionUpdate.setObjectName("actionUpdate")
         self.actionUpdate.setShortcut('F6')
-        self.actionUpdate.setIcon(QtGui.QIcon('icons/update.png'))
+        self.actionUpdate.setIcon(QtGui.QIcon(':/icons/update.png'))
 
         self.actionCommit = QtGui.QAction(MainWindow)
         self.actionCommit.setObjectName("actionCommit")
         self.actionCommit.setShortcut('F7')
-        self.actionCommit.setIcon(QtGui.QIcon('icons/commit.png'))
+        self.actionCommit.setIcon(QtGui.QIcon(':/icons/commit.png'))
 
 
         self.menuFile.addAction(self.actionFolders)
@@ -149,7 +151,7 @@ class MainWindow(object):
         
         loadingLabel = QtGui.QLabel()
         loadingLabel.setMinimumWidth(30)
-        movie = QtGui.QMovie("icons/loader.gif")
+        movie = QtGui.QMovie(":/icons/loader.gif")
         loadingLabel.setMovie(movie)
         movie.start()
         
@@ -165,7 +167,8 @@ class MainWindow(object):
         helpText = QtGui.QTextEdit()
         helpText.setReadOnly(True)
         try:
-            helpText.setText(open("README.md").read())
+            path = os.path.dirname(os.path.realpath(__file__))
+            helpText.setText(open(path + os.sep + "README.md").read())
         except (OSError, IOError) as e:
             helpText.setText("Visit http://boarg.wbbu.de")
         okButton = QtGui.QPushButton("Ok")
@@ -184,7 +187,8 @@ class MainWindow(object):
         licenseText = QtGui.QTextEdit()
         licenseText.setReadOnly(True)
         try:
-            licenseText.setText(open("LICENSE").read())
+            path = os.path.dirname(os.path.realpath(__file__))
+            licenseText.setText(open(path + os.sep + "LICENSE").read())
         except (OSError, IOError) as e:
             licenseText.setText("Licensed under the GNU GENERAL PUBLIC LICENSE Version 3 or newer."
                 "<br/>See &lt;<a href=\"http://www.gnu.org/licenses/\">"

@@ -8,8 +8,9 @@ It is intended to be platform independent and has been tested on Linux and Windo
 It is not yet feature complete, as it does not support all of boar’s command line options.
 
 Already supported are the following functions:
-- creating repositories
-- creating sessions
+- create repositories
+- create sessions
+- set ignore rules for a session
 - get the status of a workdir
 - update a workdir
 - commit changes within a workdir
